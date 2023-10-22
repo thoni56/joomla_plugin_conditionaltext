@@ -52,7 +52,7 @@ jobs:
     - name: Update manifest
       run: |
         # Extract version from plugin.xml
-        VERSION_FROM_XML=$(xmlstarlet sel -t -v "/extension/version" plugin/content/articletextfilter/articletextfilter.xml)
+        VERSION_FROM_XML=$(xmlstarlet sel -t -v "/extension/version" articletextfilter.xml)
   
         # Update update.xml
         xmlstarlet ed --inplace \
