@@ -1,0 +1,65 @@
+name: Package and release the plugin
+
+on:
+  push:
+    tags:
+    - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ZIP_BASENAME : plg_content_articletextfilter
+      TAG_NAME : ${{ github.ref_name }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Fetch main branch
+      run: git fetch origin main:main
+
+    - name: Check branch is main
+      run: |
+        if ! git merge-base --is-ancestor ${{ github.sha }} origin/main; then
+          echo "This tag is not on the main branch. Exiting."
+          exit 78
+        fi
+
+    - name: Prerequisites
+      run: |
+        sudo apt-get install -y xmlstarlet
+
+    - name: Check version consistency
+      run: |
+        VERSION_FROM_XML=$(xmlstarlet sel -t -v "/extension/version" plugin/content/articletextfilter/articletextfilter.xml)
+        VERSION_FROM_UPDATE=$(xmlstarlet sel -t -v "/updates/update/version" plg_content_articletextfilter-update.xml)
+        GIT_TAG="${GITHUB_REF#refs/tags/}"
+        if [ "v$VERSION_FROM_XML" != "$GIT_TAG" ]; then
+          echo "ERROR: Version in articletextfilter.xml ($VERSION_FROM_XML) does not match the Git tag ($GIT_TAG)."
+          exit 1
+        fi
+
+    - name: Package the plugin
+      run: |
+        zip -r ${ZIP_BASENAME}-${TAG_NAME}.zip plugin
+
+    - name: Create Release with asset
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: ${{ env.ZIP_BASENAME }}-${{ env.TAG_NAME }}.zip
+
+    - name: Update manifest
+      run: |
+        # Extract version from plugin.xml
+        VERSION_FROM_XML=$(xmlstarlet sel -t -v "/extension/version" plugin/content/articletextfilter/articletextfilter.xml)
+  
+        # Update update.xml
+        xmlstarlet ed --inplace \
+          -u "/updates/update/version" -v "$VERSION_FROM_XML" \
+          -u "/updates/update/downloads/downloadurl" -v "https://github.com/thoni56/joomla_plugin_articletextfilter/releases/download/v${VERSION_FROM_XML}/plg_content_articletextfilter-v${VERSION_FROM_XML}.zip" \
+          plg_content_articletextfilter-update.xml
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Update manifest with latest version"
+          git push origin HEAD:main

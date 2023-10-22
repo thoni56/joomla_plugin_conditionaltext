@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="content" method="upgrade" client="site">
+  <name>Article Text Filter plugin</name>
+  <author>Thomas Nilefalk, based on OSD Content Restriction plugin by Pieter-Jan de Vries</author>
+  <authorEmail>thomas@nilefalk.se</authorEmail>
+  <authorUrl>https://github.com/thoni56</authorUrl>
+  <copyright>Copyright (c) 2023 Thomas Nilefalk</copyright>
+  <license>GNU General Public License version 3, or later</license>
+  <creationDate>2023-10-10</creationDate>
+  <version>3.1.3</version>
+  <description>PLG_CONTENT_ARTICLETEXTFILTER_DESCRIPTION</description>
+  
+  <files>
+    <filename plugin="articletextfilter">articletextfilter.php</filename>
+    <folder>language</folder>
+  </files>
+  <updateservers>
+    <server type="extension" name="Content Restriction plugin Update Server" priority="1">
+      https://raw.githubusercontent.com/thoni56/joomla_plugin_articletextfilter/main/plg_content_articletextfilter-update.xml
+    </server>
+  </updateservers>
+</extension>
