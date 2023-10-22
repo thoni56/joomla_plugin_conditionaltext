@@ -6,16 +6,12 @@
 
 defined('_JEXEC') or die();
 
-namespace Joomla\Plugin\Content;
-
-
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Text;
-use Joomla\CMS\String\StringHelper;
+use Joomla\String\StringHelper;
 
 
-class plgContentArticleTextFilter extends CMSPlugin
+class PlgContentArticleTextFilter extends CMSPlugin
 {
     private $user_id = -1;
     private $article = null;
@@ -90,10 +86,10 @@ class plgContentArticleTextFilter extends CMSPlugin
             $this->groups = array();
 
             // Get a database object.
-            $db = Factory::getDbo();
+            $db = Joomla\CMS\Factory::getContainer()->get(\Joomla\Database\DatabaseDriver::class);
 
             // Build the base query.
-            $query = new \Joomla\CMS\Database\Query($db);
+            $query = $db->getQuery($db);
             $query->select('id, title');
             $query->from($query->qn('#__usergroups'));
 
@@ -373,6 +369,8 @@ class plgContentArticleTextFilter extends CMSPlugin
         }
 
         $this->article = $article;
+
+        $text = $article->text;
 
         if (!empty($text)) {
             // Check whether the plugin should process or not

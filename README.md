@@ -1,4 +1,4 @@
-# joomla_plugin_contentrestriction
+# Joomla Article Text Filter plugin
 
 Joomla 4 compatible plugin to filter parts of the text of a Joomla article.
 
@@ -46,7 +46,8 @@ described below.
 If you like to show content to non-logged in users, a.k.a. guests, you
 can do this using this syntax.
 
-    {guest} ... content for website visitors who are not logged in ... {/guest}{!guest} ... content will be displayed to any registered user .... {/guest}
+    {guest} ... content for website visitors who are not logged in ... {/guest}
+	{!guest} ... content will be displayed to any registered user .... {/guest}
 
 ### Filter based on the loged in user id
 
