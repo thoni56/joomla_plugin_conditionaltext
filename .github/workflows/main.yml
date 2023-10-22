@@ -32,7 +32,7 @@ jobs:
 
     - name: Check version consistency
       run: |
-        VERSION_FROM_XML=$(xmlstarlet sel -t -v "/extension/version" plugin/content/articletextfilter/articletextfilter.xml)
+        VERSION_FROM_XML=$(xmlstarlet sel -t -v "/extension/version" articletextfilter.xml)
         VERSION_FROM_UPDATE=$(xmlstarlet sel -t -v "/updates/update/version" plg_content_articletextfilter-update.xml)
         GIT_TAG="${GITHUB_REF#refs/tags/}"
         if [ "v$VERSION_FROM_XML" != "$GIT_TAG" ]; then
