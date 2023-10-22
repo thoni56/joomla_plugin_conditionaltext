@@ -42,7 +42,7 @@ jobs:
 
     - name: Package the plugin
       run: |
-        zip -r ${ZIP_BASENAME}-${TAG_NAME}.zip plugin
+        zip -r ${ZIP_BASENAME}-${TAG_NAME}.zip plugin articletextfilter.xml
 
     - name: Create Release with asset
       uses: ncipollo/release-action@v1
