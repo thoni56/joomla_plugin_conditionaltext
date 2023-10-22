@@ -42,8 +42,8 @@ jobs:
 
     - name: Package the plugin
       run: |
-      	cd plugin
-        zip -r ../${ZIP_BASENAME}-${TAG_NAME}.zip -x '*~' *
+        cd plugin
+        zip -r ../${ZIP_BASENAME}-${TAG_NAME}.zip . -x '*~' 
 
     - name: Create Release with asset
       uses: ncipollo/release-action@v1
