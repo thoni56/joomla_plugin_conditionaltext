@@ -7,13 +7,18 @@
   <copyright>Copyright (c) 2023 Thomas Nilefalk</copyright>
   <license>GNU General Public License version 3, or later</license>
   <creationDate>2023-10-10</creationDate>
-  <version>4.0.0</version>
+  <version>4.0.1</version>
   <description>PLG_CONTENT_ARTICLETEXTFILTER_DESCRIPTION</description>
   
   <files>
     <filename plugin="articletextfilter">articletextfilter.php</filename>
     <folder>language</folder>
   </files>
+
+  <languages>
+      <language tag="en-GB">en-GB.plg_content_articletextfilter.sys.ini</language>
+  </languages>
+
   <updateservers>
     <server type="extension" name="Content Restriction plugin Update Server" priority="1">
       https://raw.githubusercontent.com/thoni56/joomla_plugin_articletextfilter/main/plg_content_articletextfilter-update.xml
