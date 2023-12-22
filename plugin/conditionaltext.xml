@@ -12,11 +12,10 @@
   
   <files>
     <filename plugin="conditionaltext">conditionaltext.php</filename>
-    <folder>language</folder>
   </files>
 
   <languages folder="language">
-      <language tag="en-GB">en-GB/en-GB.plg_content_conditionaltext.sys.ini</language>
+      <language tag="en-GB">en-GB/plg_content_conditionaltext.sys.ini</language>
   </languages>
 
   <updateservers>
