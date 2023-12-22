@@ -6,16 +6,13 @@ T.B.D - tips on actually developing and debuggin...
 
 ## Releasing
 
-Update the version numbers in the plugin and update XML:s
-(`plugin/conditionaltext.xml` and
-`plg_content_conditionaltext-update.xml`) so that they match. You
-only need to update actual version in the update manifest.
+Update the version number in the plugin manifest XML
+(`plugin/conditionaltext.xml`) and create a tag with the same version
+with a leading `v`, as in `v4.0.1`.
 
-Create a tag with the same version with a leading `v`, as in `v4.0.1`.
-
-A GitHub action will be triggered that checks consistency, creates a
-new GitHub release, packages the plugin and attaches the plugin file
-to the release and then also automatically updates the update
-manifest.
+A GitHub action (`.github/workflows/main.yml`) will be triggered that
+checks consistency, creates a new GitHub release, packages the plugin
+and attaches the plugin file to the release and then also
+automatically updates the update manifest.
 
 
