@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <updates>
   <update>
-    <name>Article Text Filter plugin</name>
-    <description>Plugin to filter the text in an article based on userid, group, ...</description>
-    <element>articletextfilter</element>
+    <name>Conditional Text plugin</name>
+    <description>Plugin to conditionally show text in content based on userid, group, ...</description>
+    <element>conditionaltext</element>
     <type>plugin</type>
     <folder>content</folder>
     <version>4.0.1</version>

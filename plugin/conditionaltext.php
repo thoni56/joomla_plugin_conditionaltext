@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (c)2012 Open Source Design / opensourcedesign.nl
+ * @copyright	Copyright 2023 Thomas Nilefalk, original by Open Source Design / opensourcedesign.nl
  * @license		GNU GPLv3 <http://www.gnu.org/licenses/gpl.html> or later
  */
 
@@ -11,7 +11,7 @@ use Joomla\CMS\Factory;
 use Joomla\String\StringHelper;
 
 
-class PlgContentArticleTextFilter extends CMSPlugin
+class PlgContentConditionalText extends CMSPlugin
 {
     private $user_id = -1;
     private $article = null;
@@ -323,20 +323,20 @@ class PlgContentArticleTextFilter extends CMSPlugin
 
     /*
      * Any content between the tags will be rendered
-     * only if the article is displayed on the home page.
+     * only if the article is displayed on the front page.
      */
-    private function processHomePage($text) {
+    private function processFrontPage($text) {
         // Search for this tag in the content
-        $regex = "#{(!?)homepage}(.*?){/homepage}#s";
+        $regex = "#{(!?)frontpage}(.*?){/frontpage}#s";
         $menu = Factory::getApplication()->getMenu();
         $lang = Factory::getLanguage();
-        $isHome = $menu->getActive() == $menu->getDefault($lang->getTag());
+        $isFrontPage = $menu->getActive() == $menu->getDefault($lang->getTag());
 
-        $text = preg_replace_callback($regex, function ($match) use ($isHome) {
+        $text = preg_replace_callback($regex, function ($match) use ($isFrontPage) {
             if ($match[1]) {
-                return $isHome ? '' : $match[2];
+                return $isFrontPage ? '' : $match[2];
             } else {
-                return $isHome ? $match[2] : '';
+                return $isFrontPage ? $match[2] : '';
             }
         }, $text);
 
@@ -394,8 +394,8 @@ class PlgContentArticleTextFilter extends CMSPlugin
                 $text = $this->processFeatured($text);
             }
 
-            if (StringHelper::strpos($text, '{homepage') !== false || StringHelper::strpos($text, '{!homepage')) {
-                $text = $this->processHomePage($text);
+            if (StringHelper::strpos($text, '{frontpage') !== false || StringHelper::strpos($text, '{!frontpage')) {
+                $text = $this->processFrontPage($text);
             }
 
             if (StringHelper::strpos($text, '{guest') !== false || StringHelper::strpos($text, '{!guest')) {
