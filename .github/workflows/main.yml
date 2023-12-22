@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ZIP_BASENAME : plg_content_articletextfilter
+      ZIP_BASENAME : plg_content_conditionaltext
       TAG_NAME : ${{ github.ref_name }}
 
     steps:
@@ -32,11 +32,11 @@ jobs:
 
     - name: Check version consistency
       run: |
-        VERSION_FROM_XML=$(xmlstarlet sel -t -v "/extension/version" plugin/articletextfilter.xml)
-        VERSION_FROM_UPDATE=$(xmlstarlet sel -t -v "/updates/update/version" plg_content_articletextfilter-update.xml)
+        VERSION_FROM_XML=$(xmlstarlet sel -t -v "/extension/version" plugin/conditionaltext.xml)
+        VERSION_FROM_UPDATE=$(xmlstarlet sel -t -v "/updates/update/version" plg_content_conditionaltext-update.xml)
         GIT_TAG="${GITHUB_REF#refs/tags/}"
         if [ "v$VERSION_FROM_XML" != "$GIT_TAG" ]; then
-          echo "ERROR: Version in articletextfilter.xml ($VERSION_FROM_XML) does not match the Git tag ($GIT_TAG)."
+          echo "ERROR: Version in conditionaltext.xml ($VERSION_FROM_XML) does not match the Git tag ($GIT_TAG)."
           exit 1
         fi
 
@@ -53,13 +53,13 @@ jobs:
     - name: Update manifest
       run: |
         # Extract version from plugin.xml
-        VERSION_FROM_XML=$(xmlstarlet sel -t -v "/extension/version" plugin/articletextfilter.xml)
+        VERSION_FROM_XML=$(xmlstarlet sel -t -v "/extension/version" plugin/conditionaltext.xml)
   
         # Update update.xml
         xmlstarlet ed --inplace \
           -u "/updates/update/version" -v "$VERSION_FROM_XML" \
-          -u "/updates/update/downloads/downloadurl" -v "https://github.com/thoni56/joomla_plugin_articletextfilter/releases/download/v${VERSION_FROM_XML}/plg_content_articletextfilter-v${VERSION_FROM_XML}.zip" \
-          plg_content_articletextfilter-update.xml
+          -u "/updates/update/downloads/downloadurl" -v "https://github.com/thoni56/joomla_plugin_conditionaltext/releases/download/v${VERSION_FROM_XML}/plg_content_conditionaltext-v${VERSION_FROM_XML}.zip" \
+          plg_content_conditionaltext-update.xml
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -am "Update manifest with latest version"
