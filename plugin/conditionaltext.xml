@@ -7,7 +7,7 @@
   <copyright>Copyright (c) 2023 Thomas Nilefalk</copyright>
   <license>GNU General Public License version 3, or later</license>
   <creationDate>2023-10-10</creationDate>
-  <version>4.0.2</version>
+  <version>4.0.3</version>
   <description>PLG_CONTENT_CONDITIONALTEXT_DESCRIPTION</description>
   
   <files>
@@ -19,7 +19,7 @@
   </languages>
 
   <updateservers>
-    <server type="extension" name="Content Restriction plugin Update Server" priority="1">
+    <server type="extension" name="Conditional Text plugin Update Server" priority="1">
       https://raw.githubusercontent.com/thoni56/joomla_plugin_conditionaltext/main/plg_content_conditionaltext-update.xml
     </server>
   </updateservers>
