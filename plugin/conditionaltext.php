@@ -1,7 +1,8 @@
 <?php
 /**
- * @copyright	Copyright 2023 Thomas Nilefalk, original by Open Source Design / opensourcedesign.nl
- * @license		GNU GPLv3 <http://www.gnu.org/licenses/gpl.html> or later
+ * @copyright   Copyright 2023 Thomas Nilefalk
+ * @copyright   Original by Open Source Design / opensourcedesign.nl
+ * @license     GNU GPLv3 <http://www.gnu.org/licenses/gpl.html> or later
  */
 
 defined('_JEXEC') or die();

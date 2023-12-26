@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="plugin" group="content" method="upgrade" client="site">
-  <name>Conditional Text plugin</name>
+  <name>Content - Conditional Text</name>
   <author>Thomas Nilefalk, based on OSD Content Restriction plugin by Pieter-Jan de Vries</author>
   <authorEmail>thomas@nilefalk.se</authorEmail>
   <authorUrl>https://github.com/thoni56</authorUrl>
   <copyright>Copyright (c) 2023 Thomas Nilefalk</copyright>
   <license>GNU General Public License version 3, or later</license>
   <creationDate>2023-10-10</creationDate>
-  <version>4.0.3</version>
+  <version>4.0.4</version>
   <description>PLG_CONTENT_CONDITIONALTEXT_DESCRIPTION</description>
   
   <files>

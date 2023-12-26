@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <updates>
   <update>
-    <name>Conditional Text plugin</name>
+    <name>Content - Conditional Text</name>
     <description>Plugin to conditionally show text in content based on userid, group, ...</description>
     <element>conditionaltext</element>
     <type>plugin</type>
@@ -16,6 +16,6 @@
     </tags>
     <maintainer>Thomas Nilefalk</maintainer>
     <maintainerurl>https://github.com/thoni56</maintainerurl>
-    <targetplatform name="joomla" version="3.10|4.[012345]"/>
+    <targetplatform name="joomla" version="3.10|4.*|5.*"/>
   </update>
 </updates>

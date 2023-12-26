@@ -1,6 +1,6 @@
 # Joomla Conditional Text plugin
 
-Joomla 4 compatible plugin to conditionally show/hide parts of the text of a Joomla article.
+Joomla 4 and 5 compatible plugin to conditionally show/hide parts of the text of a Joomla article.
 
 Inspired by the OSD Content Restriction plugin by Open Source Design for Joomla 2.5 and 3. Rewritten for Joomla 4.
 
